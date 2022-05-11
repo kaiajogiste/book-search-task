@@ -1,0 +1,13 @@
+.book-card--body {
+  display: flex;
+  margin-top: 50px;
+}
+.book-card--description {
+  width: 90%;
+}
+.book-title {
+  font-size: 17px;
+  color: #484646;
+  margin-left: 15px;
+  white-space: nowrap;
+}

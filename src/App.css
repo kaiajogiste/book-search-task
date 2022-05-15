@@ -1,5 +1,6 @@
 main {
   min-height: 90vh;
+  background-color: rgba(244, 244, 248, 0.8);
 }
 #app-header {
 
@@ -10,6 +11,6 @@ main {
 }
 #app-footer {
   text-align: center;
-  background-color: #f8f9fa;
-  padding: 40px 0;
+  background-color: #e8e8ee;
+  padding: 30px 0;
 }

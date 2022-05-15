@@ -5,29 +5,32 @@ import isEmpty from 'lodash/isEmpty';
 
 import BookCard from '../components/BookCard';
 
-const renderBooksList = (data, query) => {
+const renderBooksList = (data) => {
   if (isEmpty(data)) {
     return null;
   }
-  let count = "";
   let titles = [];
   let test = [];
+  let error = "";
+  let pic = "";
   
   if (data.work === undefined) {
-    document.getElementById("error").innerHTML = "ERROR";
+    console.log("NOT FOUND");
+    error = "Sorry, we could not find a book with that name.";
+    pic =
+      <img className="img" src="https://img.freepik.com/free-vector/error-404-page-file-found-concept-vector-illustration_173706-60.jpg" alt="404 pic" width="400" height="260"/>;
   } else {
     for (let i = 0; i < data.work.length; i++) {
-      titles.push(data.work[i].titleweb);
-      count = data.work.length;
+      titles.push(data.work[i].titleSubtitleAuth);
       
       /* Get isbn code to show thumbnail */
       
-      /* if (data.work[i].titles.isbn.length === undefined) {
-         test.push(data.work[i].titles.isbn.$);
-       } else {
-         test.push(data.work[i].titles.isbn[0].$);
-       }
-       console.log(test);*/
+      if (data.work[i].titles.isbn.length === undefined) {
+        test.push(data.work[i].titles.isbn.$);
+      } else {
+        test.push(data.work[i].titles.isbn[0].$);
+      }
+      console.log(test);
     }
   }
   
@@ -36,9 +39,12 @@ const renderBooksList = (data, query) => {
       <br/>
       <br/>
       <div className="books-list">
-        {titles.map(book => <BookCard book={book} pic={test}/>)}
+        {titles.map(book => <BookCard book={book} pic={test[titles.indexOf(book)]}/>)}
         {/* {test.map(isb => <img src={`https://images.randomhouse.com/cover/${isb}`} />)}*/}
-        <p id="error"></p>
+        
+        <p className="error">{error}</p>
+        {pic}
+      
       </div>
     </div>
   );
@@ -48,7 +54,6 @@ const renderBooksList = (data, query) => {
 const Books = ({
   data,
   isFetching,
-  query,
   error
 }) => {
   let jsxStr = '';
@@ -56,9 +61,9 @@ const Books = ({
   if (isFetching) {
     jsxStr = <p className="search-books--loading">Loading...</p>;
   } else if (!isEmpty(error)) {
-    jsxStr = JSON.stringify(error);
+    jsxStr = "";
   } else {
-    jsxStr = renderBooksList(data, query);
+    jsxStr = renderBooksList(data);
   }
   return (
     <div className="books">
@@ -71,13 +76,11 @@ const mapStateToProps = (state) => {
   let {
     data,
     isFetching,
-    query,
     error
   } = state.books;
   return {
     data,
     isFetching,
-    query,
     error
   };
 };

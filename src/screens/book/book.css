@@ -4,10 +4,66 @@
 }
 .book-card--description {
   width: 90%;
+  display: inline-block;
 }
 .book-title {
-  font-size: 17px;
+  font-size: 16px;
   color: #484646;
-  margin-left: 15px;
-  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 400px;
+  align-self: center;
+  font-weight: bold;
+}
+.book-subtitle {
+  font-size: 15px;
+  color: #484646;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 400px;
+  align-self: center;
+}
+.book-cover {
+  width: 70%;
+  padding: 5px;
+}
+.row {
+ margin-left: 1%;
+}
+.entire-row:hover {
+  background-color: #c5c5cb;
+}
+.entire-row {
+  display: flex;
+  align-self: center;
+  height: 80px
+}
+.ns {
+  line-height: 20px;
+  width: 400px;
+  max-width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rows {
+  float: right;
+  height: 70px;
+  padding-top: 5px;
+}
+.cover-photo {
+  justify-content: center;
+  float: left;
+  width: 80px;
+  height: 70px;
+}
+.img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.error {
+  font-size: 17px;
+  font-weight: inherit;
+  color: #907ad2;
+  text-align: center;
 }

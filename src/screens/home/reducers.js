@@ -1,7 +1,6 @@
 import { REQUEST_BOOKS, RECEIVE_BOOKS } from './actionTypes'
 
 const initalState = {
-  query: '',
   isFetching: false,
   data: [],
   error: ''
@@ -12,7 +11,6 @@ export const books = (state = initalState, action) => {
     case REQUEST_BOOKS:
       return Object.assign({}, state, {
         isFetching: true,
-        query: action.query
       })
     case RECEIVE_BOOKS:
       return Object.assign({}, state, {

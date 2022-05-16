@@ -12,13 +12,10 @@ const renderBooksList = (data) => {
   let titles = [];
   let test = [];
   let error = "";
-  let pic = "";
   
   if (data.work === undefined) {
     console.log("NOT FOUND");
     error = "Sorry, we could not find a book with that name.";
-    pic =
-      <img className="img" src="https://img.freepik.com/free-vector/error-404-page-file-found-concept-vector-illustration_173706-60.jpg" alt="404 pic" width="400" height="260"/>;
   } else {
     for (let i = 0; i < data.work.length; i++) {
       titles.push(data.work[i].titleSubtitleAuth);
@@ -43,7 +40,6 @@ const renderBooksList = (data) => {
         {/* {test.map(isb => <img src={`https://images.randomhouse.com/cover/${isb}`} />)}*/}
         
         <p className="error">{error}</p>
-        {pic}
       
       </div>
     </div>

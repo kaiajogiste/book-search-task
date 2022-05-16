@@ -7,7 +7,7 @@ const Book = ({ match: { params } }) => {
   const [setIsFetching] = useState(false);
   useEffect(() => {
     setIsFetching(true)
-    fetch(`https://reststop.randomhouse.com/resources/works?lastName=${params.ID}`)
+    fetch(`https://reststop.randomhouse.com/resources/works?search=${params.ID}`)
     .then(response => {
       setBookInfo(response.data);
     })
